@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "immunosec"
+version = "0.1.0"
+description = "Infrastructure immunitaire de type ARNm contre les attaques en essaim (bots et agents IA)"
+readme = "README.md"
+license = {text = "Apache-2.0"}
+requires-python = ">=3.10"
+dependencies = []
+classifiers = [
+  "License :: OSI Approved :: Apache Software License",
+  "Topic :: Security",
+  "Development Status :: 3 - Alpha",
+]
+
+[tool.setuptools]
+packages = ["immunosec"]

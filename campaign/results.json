@@ -1,0 +1,2365 @@
+{
+  "code_hash": "d019184933e589186ec7b8118271df76cb621cbccf3650c4daddd038214062d9",
+  "results": [
+    {
+      "id": "T01",
+      "name": "Référence sans attaque (pic de trafic légitime inclus)",
+      "objective": "Aucune réaction auto-immune face à un afflux légitime",
+      "seed": 42,
+      "input_hash": "5cbc6aab130fe41f2fc3daf4a1930a78380b73e81d433cea757457099dd6b88f",
+      "output_hash": "993d129d25e902e9e3e7af294fef2f536d98e585d38074cd73db421337b0dfd2",
+      "evidence_head": "13f1e6e3cee5110475b6469c8b062d77afa86634909efc82f0fd66a840ef7e1e",
+      "passed": true,
+      "checks": [
+        {
+          "expr": "self.impacted_rate <= 0.002",
+          "value": 0.001,
+          "passed": true
+        },
+        {
+          "expr": "self_flash.impacted_rate <= 0.0",
+          "value": 0.0,
+          "passed": true
+        },
+        {
+          "expr": "system.canaries == 0",
+          "value": 0,
+          "passed": true
+        }
+      ],
+      "metrics": {
+        "self": {
+          "total": 15533,
+          "mitigated_rate": 0.001,
+          "impacted_rate": 0.001,
+          "by_innate": 15,
+          "by_adaptive": 0,
+          "allowed_after_kill": 0
+        },
+        "self_flash": {
+          "total": 2400,
+          "mitigated_rate": 0.0,
+          "impacted_rate": 0.0,
+          "by_innate": 0,
+          "by_adaptive": 0,
+          "allowed_after_kill": 0
+        },
+        "system": {
+          "detections": 0,
+          "canaries": 0,
+          "full": 0,
+          "secondary": 0,
+          "boosters": 0,
+          "decayed": 0,
+          "matured": 0,
+          "revoked": 0,
+          "pv_alerts": 0,
+          "thymus_rejects": 0,
+          "quorum_failures": 0,
+          "held_released": 0,
+          "storm_deferred": 0,
+          "fused": 0,
+          "cohort_pauses": 0,
+          "max_new_per_min": 0,
+          "lymph_dropped": 0,
+          "egress_denied": 15,
+          "leases_revoked": 0,
+          "coalition_violations_refused": 0,
+          "forged_accepted": 0,
+          "forged_rejected": 0,
+          "replay_accepted": 0,
+          "evil_pushed": 0,
+          "kill_denied": 0,
+          "kill_executed": 0,
+          "evidence_chain_valid": 1,
+          "evidence_entries": 25,
+          "decoy_hits": 0,
+          "cost_units": 0.1,
+          "naive_llm_cost_units": 4000.0,
+          "savings_factor": 39024.4,
+          "t3_escalations": 0
+        },
+        "killchain": {
+          "accès initial → T1": 33,
+          "accès initial → T2": 4,
+          "exfiltration → T0": 15,
+          "indéterminée → T1": 20,
+          "mouvement latéral → T1": 8
+        }
+      },
+      "config": {
+        "name": "T01",
+        "seed": 42,
+        "duration": 600,
+        "flash": [
+          300,
+          360
+        ],
+        "attacks": [],
+        "expect": [
+          "self.impacted_rate <= 0.002",
+          "self_flash.impacted_rate <= 0.0",
+          "system.canaries == 0"
+        ]
+      }
+    },
+    {
+      "id": "T02",
+      "name": "Essaim low & slow (bourrage d'identifiants, 600 IP)",
+      "objective": "Détection et confinement rapides malgré des sources individuellement sous les seuils",
+      "seed": 42,
+      "input_hash": "7f819bf1146cbdfb7a97cc5a3ae2f405c24803a88381d0c96ca8473fcd2d18f7",
+      "output_hash": "e58d9f3b4444f62a139472e84ecfe5f7e9fcc23cab243927556b55754db1a530",
+      "evidence_head": "2a7ae943268eb38a9d6735bc2a5c4609b47e65c35ed2d12bc7b861241fe32fd0",
+      "passed": true,
+      "checks": [
+        {
+          "expr": "bot1.mitigated_rate >= 0.9",
+          "value": 0.9927,
+          "passed": true
+        },
+        {
+          "expr": "bot1.ttc <= 30",
+          "value": 12,
+          "passed": true
+        },
+        {
+          "expr": "bot1.success_rate <= 0.15",
+          "value": 0.0,
+          "passed": true
+        },
+        {
+          "expr": "self.impacted_rate <= 0.002",
+          "value": 0.0012,
+          "passed": true
+        }
+      ],
+      "metrics": {
+        "bot1": {
+          "total": 9000,
+          "mitigated_rate": 0.9927,
+          "impacted_rate": 0.9927,
+          "by_innate": 0,
+          "by_adaptive": 8934,
+          "success": 0,
+          "success_rate": 0.0,
+          "ttc": 12,
+          "allowed_after_kill": 0
+        },
+        "self": {
+          "total": 15599,
+          "mitigated_rate": 0.0012,
+          "impacted_rate": 0.0012,
+          "by_innate": 18,
+          "by_adaptive": 0,
+          "allowed_after_kill": 0
+        },
+        "system": {
+          "detections": 1,
+          "canaries": 1,
+          "full": 1,
+          "secondary": 0,
+          "boosters": 1,
+          "decayed": 0,
+          "matured": 0,
+          "revoked": 0,
+          "pv_alerts": 0,
+          "thymus_rejects": 0,
+          "quorum_failures": 0,
+          "held_released": 0,
+          "storm_deferred": 0,
+          "fused": 0,
+          "cohort_pauses": 0,
+          "max_new_per_min": 1,
+          "lymph_dropped": 0,
+          "egress_denied": 18,
+          "leases_revoked": 0,
+          "coalition_violations_refused": 0,
+          "forged_accepted": 0,
+          "forged_rejected": 0,
+          "replay_accepted": 0,
+          "evil_pushed": 0,
+          "kill_denied": 0,
+          "kill_executed": 0,
+          "evidence_chain_valid": 1,
+          "evidence_entries": 34,
+          "decoy_hits": 0,
+          "cost_units": 1.26,
+          "naive_llm_cost_units": 453900.0,
+          "savings_factor": 360581.5,
+          "t3_escalations": 0
+        },
+        "killchain": {
+          "accès initial → T0": 8723,
+          "accès initial → T1": 28,
+          "accès initial → T2": 30,
+          "exfiltration → T0": 18,
+          "indéterminée → T0": 247,
+          "indéterminée → T1": 25,
+          "mouvement latéral → T1": 7
+        }
+      },
+      "config": {
+        "name": "T02",
+        "seed": 42,
+        "duration": 600,
+        "attacks": [
+          {
+            "type": "botnet",
+            "label": "bot1",
+            "start": 120,
+            "end": 420
+          }
+        ],
+        "expect": [
+          "bot1.mitigated_rate >= 0.9",
+          "bot1.ttc <= 30",
+          "bot1.success_rate <= 0.15",
+          "self.impacted_rate <= 0.002"
+        ]
+      }
+    },
+    {
+      "id": "T03",
+      "name": "Variant muté (nouvelle empreinte TLS, même outillage)",
+      "objective": "Réponse secondaire par mémoire, plus rapide que la primaire, ciblant la région conservée",
+      "seed": 42,
+      "input_hash": "80746d76b46fa285dc79842745d8256478eda81a1bbc1e5808dfb3c391aed963",
+      "output_hash": "cd46d439450c6445570d84a697e741e41fba244b9c16ea50b1dadc331a37e7c1",
+      "evidence_head": "9df8e0b6c139aca54c6fd26527fc2706cb49208c83d914612c0ed51d532edae1",
+      "passed": true,
+      "checks": [
+        {
+          "expr": "bot2.ttc <= 5",
+          "value": 1,
+          "passed": true
+        },
+        {
+          "expr": "system.secondary >= 1",
+          "value": 1,
+          "passed": true
+        },
+        {
+          "expr": "bot2.mitigated_rate >= 0.95",
+          "value": 0.995,
+          "passed": true
+        }
+      ],
+      "metrics": {
+        "bot1": {
+          "total": 5400,
+          "mitigated_rate": 0.9878,
+          "impacted_rate": 0.9878,
+          "by_innate": 0,
+          "by_adaptive": 5334,
+          "success": 0,
+          "success_rate": 0.0,
+          "ttc": 12,
+          "allowed_after_kill": 0
+        },
+        "bot2": {
+          "total": 6000,
+          "mitigated_rate": 0.995,
+          "impacted_rate": 0.995,
+          "by_innate": 0,
+          "by_adaptive": 5970,
+          "success": 1,
+          "success_rate": 0.0056,
+          "ttc": 1,
+          "allowed_after_kill": 0
+        },
+        "self": {
+          "total": 18178,
+          "mitigated_rate": 0.001,
+          "impacted_rate": 0.001,
+          "by_innate": 19,
+          "by_adaptive": 0,
+          "allowed_after_kill": 0
+        },
+        "system": {
+          "detections": 2,
+          "canaries": 1,
+          "full": 1,
+          "secondary": 1,
+          "boosters": 1,
+          "decayed": 1,
+          "matured": 0,
+          "revoked": 0,
+          "pv_alerts": 0,
+          "thymus_rejects": 0,
+          "quorum_failures": 0,
+          "held_released": 0,
+          "storm_deferred": 0,
+          "fused": 0,
+          "cohort_pauses": 0,
+          "max_new_per_min": 1,
+          "lymph_dropped": 0,
+          "egress_denied": 19,
+          "leases_revoked": 0,
+          "coalition_violations_refused": 0,
+          "forged_accepted": 0,
+          "forged_rejected": 0,
+          "replay_accepted": 0,
+          "evil_pushed": 0,
+          "kill_denied": 0,
+          "kill_executed": 0,
+          "evidence_chain_valid": 1,
+          "evidence_entries": 39,
+          "decoy_hits": 0,
+          "cost_units": 1.8,
+          "naive_llm_cost_units": 574400.0,
+          "savings_factor": 319839.6,
+          "t3_escalations": 0
+        },
+        "killchain": {
+          "accès initial → T0": 11017,
+          "accès initial → T1": 32,
+          "accès initial → T2": 59,
+          "exfiltration → T0": 19,
+          "indéterminée → T0": 323,
+          "indéterminée → T1": 28,
+          "mouvement latéral → T1": 10
+        }
+      },
+      "config": {
+        "name": "T03",
+        "seed": 42,
+        "duration": 700,
+        "attacks": [
+          {
+            "type": "botnet",
+            "label": "bot1",
+            "start": 120,
+            "end": 300
+          },
+          {
+            "type": "botnet",
+            "label": "bot2",
+            "start": 450,
+            "end": 650,
+            "ja3": "ja3-bot-c3e0",
+            "ua_family": "firefox",
+            "ip_prefix": "203.1"
+          }
+        ],
+        "expect": [
+          "bot2.ttc <= 5",
+          "system.secondary >= 1",
+          "bot2.mitigated_rate >= 0.95"
+        ]
+      }
+    },
+    {
+      "id": "T04",
+      "name": "Mimétisme parfait du soi (limite documentée)",
+      "objective": "Sans épitope distinctif, la couche adaptative NE DOIT PAS réagir (pas d'auto-immunité)",
+      "seed": 42,
+      "input_hash": "90c7d1d1a4b2539860713aa3b280eba71158fac93c9fa3e661040f1fc1465c2e",
+      "output_hash": "869a439ca0eb4fea48d11b6cb2e16fb1eef716dc2d6cf4b70df6016498601939",
+      "evidence_head": "b3298026a9970981d571e6c667f2abbc4a4eeff35f632555a46604fefc736876",
+      "passed": true,
+      "checks": [
+        {
+          "expr": "self.impacted_rate <= 0.002",
+          "value": 0.0012,
+          "passed": true
+        },
+        {
+          "expr": "system.canaries == 0",
+          "value": 0,
+          "passed": true
+        }
+      ],
+      "metrics": {
+        "mimic": {
+          "total": 9000,
+          "mitigated_rate": 0.0,
+          "impacted_rate": 0.0,
+          "by_innate": 0,
+          "by_adaptive": 0,
+          "success": 247,
+          "success_rate": 1.0,
+          "ttc": null,
+          "allowed_after_kill": 0
+        },
+        "self": {
+          "total": 13001,
+          "mitigated_rate": 0.0012,
+          "impacted_rate": 0.0012,
+          "by_innate": 15,
+          "by_adaptive": 0,
+          "allowed_after_kill": 0
+        },
+        "system": {
+          "detections": 0,
+          "canaries": 0,
+          "full": 0,
+          "secondary": 0,
+          "boosters": 0,
+          "decayed": 0,
+          "matured": 0,
+          "revoked": 0,
+          "pv_alerts": 0,
+          "thymus_rejects": 0,
+          "quorum_failures": 0,
+          "held_released": 0,
+          "storm_deferred": 0,
+          "fused": 0,
+          "cohort_pauses": 0,
+          "max_new_per_min": 0,
+          "lymph_dropped": 0,
+          "egress_denied": 15,
+          "leases_revoked": 0,
+          "coalition_violations_refused": 0,
+          "forged_accepted": 0,
+          "forged_rejected": 0,
+          "replay_accepted": 0,
+          "evil_pushed": 0,
+          "kill_denied": 0,
+          "kill_executed": 0,
+          "evidence_chain_valid": 1,
+          "evidence_entries": 23,
+          "decoy_hits": 0,
+          "cost_units": 87.58,
+          "naive_llm_cost_units": 441050.0,
+          "savings_factor": 5035.7,
+          "t3_escalations": 0
+        },
+        "killchain": {
+          "accès initial → T1": 22,
+          "accès initial → T2": 8753,
+          "exfiltration → T0": 15,
+          "indéterminée → T1": 24,
+          "mouvement latéral → T1": 7
+        }
+      },
+      "config": {
+        "name": "T04",
+        "seed": 42,
+        "duration": 500,
+        "attacks": [
+          {
+            "type": "mimicry",
+            "label": "mimic",
+            "start": 100,
+            "end": 400
+          }
+        ],
+        "expect": [
+          "self.impacted_rate <= 0.002",
+          "system.canaries == 0"
+        ]
+      }
+    },
+    {
+      "id": "T05",
+      "name": "Collision provoquée → pharmacovigilance et maturation d'affinité",
+      "objective": "Détecter après déploiement qu'un transcrit touche du légitime et le corriger seul",
+      "seed": 42,
+      "input_hash": "c72ab5fb7f347616a00cda8bb0bcfe8cc384dcdefb7044e2ac02750d9728fc26",
+      "output_hash": "0c9db8d29907c03bb4b42295fcc7c67f7050677d67a1a662af491bc7136d03c5",
+      "evidence_head": "ee530a62cf1bbb51ad26ef38eb0e057bee047cddd3735a9e5cccf957237a3f68",
+      "passed": true,
+      "checks": [
+        {
+          "expr": "system.pv_alerts >= 1",
+          "value": 1,
+          "passed": true
+        },
+        {
+          "expr": "system.matured >= 1",
+          "value": 1,
+          "passed": true
+        },
+        {
+          "expr": "self_app.impacted_rate <= 0.05",
+          "value": 0.0312,
+          "passed": true
+        },
+        {
+          "expr": "bot_app.mitigated_rate >= 0.85",
+          "value": 0.996,
+          "passed": true
+        }
+      ],
+      "metrics": {
+        "bot_app": {
+          "total": 16500,
+          "mitigated_rate": 0.996,
+          "impacted_rate": 0.996,
+          "by_innate": 0,
+          "by_adaptive": 16434,
+          "success": 0,
+          "success_rate": 0.0,
+          "ttc": 12,
+          "allowed_after_kill": 0
+        },
+        "self": {
+          "total": 18178,
+          "mitigated_rate": 0.001,
+          "impacted_rate": 0.001,
+          "by_innate": 19,
+          "by_adaptive": 0,
+          "allowed_after_kill": 0
+        },
+        "self_app": {
+          "total": 3200,
+          "mitigated_rate": 0.0312,
+          "impacted_rate": 0.0312,
+          "by_innate": 0,
+          "by_adaptive": 100,
+          "allowed_after_kill": 0
+        },
+        "system": {
+          "detections": 66,
+          "canaries": 1,
+          "full": 1,
+          "secondary": 65,
+          "boosters": 0,
+          "decayed": 0,
+          "matured": 1,
+          "revoked": 0,
+          "pv_alerts": 1,
+          "thymus_rejects": 0,
+          "quorum_failures": 0,
+          "held_released": 0,
+          "storm_deferred": 0,
+          "fused": 0,
+          "cohort_pauses": 0,
+          "max_new_per_min": 1,
+          "lymph_dropped": 0,
+          "egress_denied": 19,
+          "leases_revoked": 0,
+          "coalition_violations_refused": 0,
+          "forged_accepted": 0,
+          "forged_rejected": 0,
+          "replay_accepted": 0,
+          "evil_pushed": 0,
+          "kill_denied": 0,
+          "kill_executed": 0,
+          "evidence_chain_valid": 1,
+          "evidence_entries": 167,
+          "decoy_hits": 0,
+          "cost_units": 52.82,
+          "naive_llm_cost_units": 838950.0,
+          "savings_factor": 15883.2,
+          "t3_escalations": 1
+        },
+        "killchain": {
+          "accès initial → T0": 16015,
+          "accès initial → T1": 32,
+          "accès initial → T2": 109,
+          "exfiltration → T0": 19,
+          "indéterminée → T0": 566,
+          "indéterminée → T1": 28,
+          "mouvement latéral → T1": 10
+        }
+      },
+      "config": {
+        "name": "T05",
+        "seed": 42,
+        "duration": 700,
+        "attacks": [
+          {
+            "type": "botnet",
+            "label": "bot_app",
+            "start": 100,
+            "end": 650,
+            "ja3": "ja3-app-2.0",
+            "header_order": "ho-app",
+            "ua_family": "app",
+            "ip_prefix": "203.2"
+          },
+          {
+            "type": "app_launch",
+            "label": "self_app",
+            "start": 300,
+            "end": 700
+          }
+        ],
+        "expect": [
+          "system.pv_alerts >= 1",
+          "system.matured >= 1",
+          "self_app.impacted_rate <= 0.05",
+          "bot_app.mitigated_rate >= 0.85"
+        ]
+      }
+    },
+    {
+      "id": "T06",
+      "name": "Inondation du ganglion + essaim réel masqué",
+      "objective": "La contre-pression empêche la saturation du processus de réparation",
+      "seed": 42,
+      "input_hash": "e6b9fc4ea9a746364def5d58b96b7d807e13e7c2972358e66f357f2b2244a26f",
+      "output_hash": "00ff719ea7475d32710a070503fdef5f2b16d6bcdbfa6b52c796644bb299ad8a",
+      "evidence_head": "bb6c6926480672eb02c8583fe3882b985fbbe6680f002291576379e8afece315",
+      "passed": true,
+      "checks": [
+        {
+          "expr": "system.lymph_dropped >= 1",
+          "value": 70001,
+          "passed": true
+        },
+        {
+          "expr": "bot1.ttc <= 30",
+          "value": 17,
+          "passed": true
+        },
+        {
+          "expr": "bot1.mitigated_rate >= 0.9",
+          "value": 0.9927,
+          "passed": true
+        }
+      ],
+      "metrics": {
+        "bot1": {
+          "total": 9000,
+          "mitigated_rate": 0.9927,
+          "impacted_rate": 0.9927,
+          "by_innate": 0,
+          "by_adaptive": 8934,
+          "success": 2,
+          "success_rate": 0.0085,
+          "ttc": 17,
+          "allowed_after_kill": 0
+        },
+        "flood": {
+          "total": 90000,
+          "mitigated_rate": 0.0,
+          "impacted_rate": 0.0,
+          "by_innate": 0,
+          "by_adaptive": 0,
+          "success": 0,
+          "success_rate": 0.0,
+          "ttc": null,
+          "allowed_after_kill": 0
+        },
+        "self": {
+          "total": 13001,
+          "mitigated_rate": 0.0012,
+          "impacted_rate": 0.0012,
+          "by_innate": 15,
+          "by_adaptive": 0,
+          "allowed_after_kill": 0
+        },
+        "system": {
+          "detections": 1,
+          "canaries": 1,
+          "full": 1,
+          "secondary": 0,
+          "boosters": 1,
+          "decayed": 0,
+          "matured": 0,
+          "revoked": 0,
+          "pv_alerts": 0,
+          "thymus_rejects": 0,
+          "quorum_failures": 0,
+          "held_released": 0,
+          "storm_deferred": 0,
+          "fused": 0,
+          "cohort_pauses": 0,
+          "max_new_per_min": 1,
+          "lymph_dropped": 70001,
+          "egress_denied": 15,
+          "leases_revoked": 0,
+          "coalition_violations_refused": 0,
+          "forged_accepted": 0,
+          "forged_rejected": 0,
+          "replay_accepted": 0,
+          "evil_pushed": 0,
+          "kill_denied": 0,
+          "kill_executed": 0,
+          "evidence_chain_valid": 1,
+          "evidence_entries": 29,
+          "decoy_hits": 0,
+          "cost_units": 901.24,
+          "naive_llm_cost_units": 4953350.0,
+          "savings_factor": 5496.1,
+          "t3_escalations": 0
+        },
+        "killchain": {
+          "accès initial → T0": 8737,
+          "accès initial → T1": 22,
+          "accès initial → T2": 29,
+          "exfiltration → T0": 15,
+          "indéterminée → T0": 233,
+          "indéterminée → T1": 24,
+          "indéterminée → T2": 90000,
+          "mouvement latéral → T1": 7
+        }
+      },
+      "config": {
+        "name": "T06",
+        "seed": 42,
+        "duration": 500,
+        "attacks": [
+          {
+            "type": "lymph_flood",
+            "start": 100,
+            "end": 400,
+            "rate": 300
+          },
+          {
+            "type": "botnet",
+            "label": "bot1",
+            "start": 150,
+            "end": 450
+          }
+        ],
+        "expect": [
+          "system.lymph_dropped >= 1",
+          "bot1.ttc <= 30",
+          "bot1.mitigated_rate >= 0.9"
+        ]
+      }
+    },
+    {
+      "id": "T07",
+      "name": "Tempête de micro-essaims (tempête de cytokines)",
+      "objective": "Fusion polyvalente + disjoncteur : rythme de transcrits borné sans abandonner la défense",
+      "seed": 42,
+      "input_hash": "dda8d0abcfdd9df08f47f840d592aec9a1947c410a59a08d014729181e4ad67c",
+      "output_hash": "43a159e6aa3a549bc6bb79ff5f33699bde8b630a431d7a7f6134991bc1f4b73e",
+      "evidence_head": "1b283d683db1fa2caec20a7b7aeb73030fa4b21ce86f6c1b9306ab659c623f06",
+      "passed": true,
+      "checks": [
+        {
+          "expr": "system.max_new_per_min <= 4",
+          "value": 2,
+          "passed": true
+        },
+        {
+          "expr": "system.fused >= 1",
+          "value": 8,
+          "passed": true
+        },
+        {
+          "expr": "churn.mitigated_rate >= 0.6",
+          "value": 0.9378,
+          "passed": true
+        },
+        {
+          "expr": "self.impacted_rate <= 0.002",
+          "value": 0.0012,
+          "passed": true
+        }
+      ],
+      "metrics": {
+        "churn": {
+          "total": 12000,
+          "mitigated_rate": 0.9378,
+          "impacted_rate": 0.9378,
+          "by_innate": 0,
+          "by_adaptive": 11254,
+          "success": 17,
+          "success_rate": 0.0474,
+          "ttc": 40,
+          "allowed_after_kill": 0
+        },
+        "self": {
+          "total": 15599,
+          "mitigated_rate": 0.0012,
+          "impacted_rate": 0.0012,
+          "by_innate": 18,
+          "by_adaptive": 0,
+          "allowed_after_kill": 0
+        },
+        "system": {
+          "detections": 2,
+          "canaries": 2,
+          "full": 2,
+          "secondary": 0,
+          "boosters": 2,
+          "decayed": 0,
+          "matured": 0,
+          "revoked": 0,
+          "pv_alerts": 0,
+          "thymus_rejects": 0,
+          "quorum_failures": 0,
+          "held_released": 0,
+          "storm_deferred": 0,
+          "fused": 8,
+          "cohort_pauses": 0,
+          "max_new_per_min": 2,
+          "lymph_dropped": 0,
+          "egress_denied": 18,
+          "leases_revoked": 0,
+          "coalition_violations_refused": 0,
+          "forged_accepted": 0,
+          "forged_rejected": 0,
+          "replay_accepted": 0,
+          "evil_pushed": 0,
+          "kill_denied": 0,
+          "kill_executed": 0,
+          "evidence_chain_valid": 1,
+          "evidence_entries": 40,
+          "decoy_hits": 0,
+          "cost_units": 7.77,
+          "naive_llm_cost_units": 603050.0,
+          "savings_factor": 77569.7,
+          "t3_escalations": 0
+        },
+        "killchain": {
+          "accès initial → T0": 10983,
+          "accès initial → T1": 28,
+          "accès initial → T2": 658,
+          "exfiltration → T0": 18,
+          "indéterminée → T0": 342,
+          "indéterminée → T1": 25,
+          "mouvement latéral → T1": 7
+        }
+      },
+      "config": {
+        "name": "T07",
+        "seed": 42,
+        "duration": 600,
+        "attacks": [
+          {
+            "type": "micro_swarms",
+            "start": 100,
+            "end": 500,
+            "k": 10
+          }
+        ],
+        "expect": [
+          "system.max_new_per_min <= 4",
+          "system.fused >= 1",
+          "churn.mitigated_rate >= 0.6",
+          "self.impacted_rate <= 0.002"
+        ]
+      }
+    },
+    {
+      "id": "T08",
+      "name": "Capsule forgée (1 clé volée) + rejeu de capsules anciennes",
+      "objective": "La nanoparticule (quorum + versions monotones) résiste à la falsification et au rejeu",
+      "seed": 42,
+      "input_hash": "a93c44053f1bbd4546e968030ecf5b09e0a97781e735f738b2c212e558edbc84",
+      "output_hash": "0ace99f6d7f352b8a73ba55f60998447040b3eb0467956e69624a37113cdf0e7",
+      "evidence_head": "9fc3b2b010d1fc1df3fdfed51dde6194d65013f63bc3002b2545280a4fda4f33",
+      "passed": true,
+      "checks": [
+        {
+          "expr": "system.forged_accepted == 0",
+          "value": 0,
+          "passed": true
+        },
+        {
+          "expr": "system.replay_accepted == 0",
+          "value": 0,
+          "passed": true
+        },
+        {
+          "expr": "bot1.mitigated_rate >= 0.9",
+          "value": 0.9927,
+          "passed": true
+        }
+      ],
+      "metrics": {
+        "bot1": {
+          "total": 9000,
+          "mitigated_rate": 0.9927,
+          "impacted_rate": 0.9927,
+          "by_innate": 0,
+          "by_adaptive": 8934,
+          "success": 0,
+          "success_rate": 0.0,
+          "ttc": 12,
+          "allowed_after_kill": 0
+        },
+        "self": {
+          "total": 13001,
+          "mitigated_rate": 0.0012,
+          "impacted_rate": 0.0012,
+          "by_innate": 15,
+          "by_adaptive": 0,
+          "allowed_after_kill": 0
+        },
+        "system": {
+          "detections": 1,
+          "canaries": 1,
+          "full": 1,
+          "secondary": 0,
+          "boosters": 1,
+          "decayed": 0,
+          "matured": 0,
+          "revoked": 0,
+          "pv_alerts": 0,
+          "thymus_rejects": 0,
+          "quorum_failures": 0,
+          "held_released": 0,
+          "storm_deferred": 0,
+          "fused": 0,
+          "cohort_pauses": 0,
+          "max_new_per_min": 1,
+          "lymph_dropped": 0,
+          "egress_denied": 15,
+          "leases_revoked": 0,
+          "coalition_violations_refused": 0,
+          "forged_accepted": 0,
+          "forged_rejected": 12,
+          "replay_accepted": 0,
+          "evil_pushed": 0,
+          "kill_denied": 0,
+          "kill_executed": 0,
+          "evidence_chain_valid": 1,
+          "evidence_entries": 29,
+          "decoy_hits": 0,
+          "cost_units": 1.25,
+          "naive_llm_cost_units": 453400.0,
+          "savings_factor": 362285.3,
+          "t3_escalations": 0
+        },
+        "killchain": {
+          "accès initial → T0": 8723,
+          "accès initial → T1": 22,
+          "accès initial → T2": 30,
+          "exfiltration → T0": 15,
+          "indéterminée → T0": 247,
+          "indéterminée → T1": 24,
+          "mouvement latéral → T1": 7
+        }
+      },
+      "config": {
+        "name": "T08",
+        "seed": 42,
+        "duration": 500,
+        "attacks": [
+          {
+            "type": "botnet",
+            "label": "bot1",
+            "start": 120,
+            "end": 420
+          }
+        ],
+        "faults": [
+          {
+            "type": "forged_capsule",
+            "at": 200,
+            "stolen": [
+              "verif-A"
+            ]
+          },
+          {
+            "type": "replay",
+            "at": 250,
+            "n": 5
+          }
+        ],
+        "expect": [
+          "system.forged_accepted == 0",
+          "system.replay_accepted == 0",
+          "bot1.mitigated_rate >= 0.9"
+        ]
+      }
+    },
+    {
+      "id": "T09",
+      "name": "Perte de 1 vérificateur sur 3 pendant la détection",
+      "objective": "Le quorum 2-sur-3 tolère une panne sans ralentir la réparation",
+      "seed": 42,
+      "input_hash": "f893b30e8a1ccb7d18f8f366b76cc4da81908e34908e412c6e00462acd706de7",
+      "output_hash": "f1ae8830e950fe280e8a8a20355af6d7bbe2f28b6e10eab1b37dcbb8f86c2363",
+      "evidence_head": "9fc3b2b010d1fc1df3fdfed51dde6194d65013f63bc3002b2545280a4fda4f33",
+      "passed": true,
+      "checks": [
+        {
+          "expr": "system.quorum_failures == 0",
+          "value": 0,
+          "passed": true
+        },
+        {
+          "expr": "bot1.ttc <= 30",
+          "value": 12,
+          "passed": true
+        }
+      ],
+      "metrics": {
+        "bot1": {
+          "total": 9000,
+          "mitigated_rate": 0.9927,
+          "impacted_rate": 0.9927,
+          "by_innate": 0,
+          "by_adaptive": 8934,
+          "success": 0,
+          "success_rate": 0.0,
+          "ttc": 12,
+          "allowed_after_kill": 0
+        },
+        "self": {
+          "total": 13001,
+          "mitigated_rate": 0.0012,
+          "impacted_rate": 0.0012,
+          "by_innate": 15,
+          "by_adaptive": 0,
+          "allowed_after_kill": 0
+        },
+        "system": {
+          "detections": 1,
+          "canaries": 1,
+          "full": 1,
+          "secondary": 0,
+          "boosters": 1,
+          "decayed": 0,
+          "matured": 0,
+          "revoked": 0,
+          "pv_alerts": 0,
+          "thymus_rejects": 0,
+          "quorum_failures": 0,
+          "held_released": 0,
+          "storm_deferred": 0,
+          "fused": 0,
+          "cohort_pauses": 0,
+          "max_new_per_min": 1,
+          "lymph_dropped": 0,
+          "egress_denied": 15,
+          "leases_revoked": 0,
+          "coalition_violations_refused": 0,
+          "forged_accepted": 0,
+          "forged_rejected": 0,
+          "replay_accepted": 0,
+          "evil_pushed": 0,
+          "kill_denied": 0,
+          "kill_executed": 0,
+          "evidence_chain_valid": 1,
+          "evidence_entries": 29,
+          "decoy_hits": 0,
+          "cost_units": 1.25,
+          "naive_llm_cost_units": 453400.0,
+          "savings_factor": 362285.3,
+          "t3_escalations": 0
+        },
+        "killchain": {
+          "accès initial → T0": 8723,
+          "accès initial → T1": 22,
+          "accès initial → T2": 30,
+          "exfiltration → T0": 15,
+          "indéterminée → T0": 247,
+          "indéterminée → T1": 24,
+          "mouvement latéral → T1": 7
+        }
+      },
+      "config": {
+        "name": "T09",
+        "seed": 42,
+        "duration": 500,
+        "attacks": [
+          {
+            "type": "botnet",
+            "label": "bot1",
+            "start": 120,
+            "end": 420
+          }
+        ],
+        "faults": [
+          {
+            "type": "verifier_outage",
+            "ids": [
+              "verif-B"
+            ],
+            "start": 100,
+            "end": 400
+          }
+        ],
+        "expect": [
+          "system.quorum_failures == 0",
+          "bot1.ttc <= 30"
+        ]
+      }
+    },
+    {
+      "id": "T10",
+      "name": "Perte de 2 vérificateurs sur 3 (sûreté avant disponibilité)",
+      "objective": "Sans quorum, rien n'est diffusé ; la défense reprend dès le rétablissement",
+      "seed": 42,
+      "input_hash": "94d126e35c8ffe5bc3cc86030f8d4dd13bbf8961bbd1487936b6180b68d75af2",
+      "output_hash": "682cfd231f3163ea01dcea0e5e04e2280df5bdde66648ec5a8615e6470b023c3",
+      "evidence_head": "6c3af927b22cc10c5cfdc354440119b45ac36a4244cbda3c32a6394eb47596c8",
+      "passed": true,
+      "checks": [
+        {
+          "expr": "system.quorum_failures >= 1",
+          "value": 16,
+          "passed": true
+        },
+        {
+          "expr": "bot1.mitigated_rate >= 0.6",
+          "value": 0.726,
+          "passed": true
+        },
+        {
+          "expr": "self.impacted_rate <= 0.002",
+          "value": 0.0012,
+          "passed": true
+        }
+      ],
+      "metrics": {
+        "bot1": {
+          "total": 9000,
+          "mitigated_rate": 0.726,
+          "impacted_rate": 0.726,
+          "by_innate": 0,
+          "by_adaptive": 6534,
+          "success": 76,
+          "success_rate": 0.3077,
+          "ttc": 98,
+          "allowed_after_kill": 0
+        },
+        "self": {
+          "total": 15599,
+          "mitigated_rate": 0.0012,
+          "impacted_rate": 0.0012,
+          "by_innate": 18,
+          "by_adaptive": 0,
+          "allowed_after_kill": 0
+        },
+        "system": {
+          "detections": 17,
+          "canaries": 1,
+          "full": 1,
+          "secondary": 0,
+          "boosters": 1,
+          "decayed": 0,
+          "matured": 0,
+          "revoked": 0,
+          "pv_alerts": 0,
+          "thymus_rejects": 0,
+          "quorum_failures": 16,
+          "held_released": 0,
+          "storm_deferred": 0,
+          "fused": 0,
+          "cohort_pauses": 0,
+          "max_new_per_min": 1,
+          "lymph_dropped": 0,
+          "egress_denied": 18,
+          "leases_revoked": 0,
+          "coalition_violations_refused": 0,
+          "forged_accepted": 0,
+          "forged_rejected": 0,
+          "replay_accepted": 0,
+          "evil_pushed": 0,
+          "kill_denied": 0,
+          "kill_executed": 0,
+          "evidence_chain_valid": 1,
+          "evidence_entries": 66,
+          "decoy_hits": 0,
+          "cost_units": 24.26,
+          "naive_llm_cost_units": 450100.0,
+          "savings_factor": 18554.1,
+          "t3_escalations": 0
+        },
+        "killchain": {
+          "accès initial → T0": 6399,
+          "accès initial → T1": 28,
+          "accès initial → T2": 2354,
+          "exfiltration → T0": 18,
+          "indéterminée → T0": 171,
+          "indéterminée → T1": 25,
+          "mouvement latéral → T1": 7
+        }
+      },
+      "config": {
+        "name": "T10",
+        "seed": 42,
+        "duration": 600,
+        "attacks": [
+          {
+            "type": "botnet",
+            "label": "bot1",
+            "start": 120,
+            "end": 420
+          }
+        ],
+        "faults": [
+          {
+            "type": "verifier_outage",
+            "ids": [
+              "verif-A",
+              "verif-B"
+            ],
+            "start": 100,
+            "end": 200
+          }
+        ],
+        "expect": [
+          "system.quorum_failures >= 1",
+          "bot1.mitigated_rate >= 0.6",
+          "self.impacted_rate <= 0.002"
+        ]
+      }
+    },
+    {
+      "id": "T11",
+      "name": "Panne du plan de contrôle pendant l'attaque (360 s > TTL)",
+      "objective": "Mode dégradé : les protections ne se dégradent pas quand l'orchestrateur tombe",
+      "seed": 42,
+      "input_hash": "4d3cc4ab54b669e96a808b843e502108e1f64908c5ea26e52807009c7b6739d3",
+      "output_hash": "b08314ceaca35f45fe21b2d5bee7f657b44249ea743f83153a563254b089fc0d",
+      "evidence_head": "55d8204c97ea65e47616f7b9af5c3541bba9f05a6beec1447ab09c152d72e6a0",
+      "passed": true,
+      "checks": [
+        {
+          "expr": "bot1.mitigated_rate >= 0.9",
+          "value": 0.9965,
+          "passed": true
+        }
+      ],
+      "metrics": {
+        "bot1": {
+          "total": 18900,
+          "mitigated_rate": 0.9965,
+          "impacted_rate": 0.9965,
+          "by_innate": 0,
+          "by_adaptive": 18834,
+          "success": 0,
+          "success_rate": 0.0,
+          "ttc": 12,
+          "allowed_after_kill": 0
+        },
+        "self": {
+          "total": 20789,
+          "mitigated_rate": 0.001,
+          "impacted_rate": 0.001,
+          "by_innate": 20,
+          "by_adaptive": 0,
+          "allowed_after_kill": 0
+        },
+        "system": {
+          "detections": 1,
+          "canaries": 1,
+          "full": 1,
+          "secondary": 0,
+          "boosters": 1,
+          "decayed": 0,
+          "matured": 0,
+          "revoked": 0,
+          "pv_alerts": 0,
+          "thymus_rejects": 0,
+          "quorum_failures": 0,
+          "held_released": 0,
+          "storm_deferred": 0,
+          "fused": 0,
+          "cohort_pauses": 0,
+          "max_new_per_min": 1,
+          "lymph_dropped": 0,
+          "egress_denied": 20,
+          "leases_revoked": 0,
+          "coalition_violations_refused": 0,
+          "forged_accepted": 0,
+          "forged_rejected": 0,
+          "replay_accepted": 0,
+          "evil_pushed": 0,
+          "kill_denied": 0,
+          "kill_executed": 0,
+          "evidence_chain_valid": 1,
+          "evidence_entries": 33,
+          "decoy_hits": 0,
+          "cost_units": 2.27,
+          "naive_llm_cost_units": 949800.0,
+          "savings_factor": 419337.7,
+          "t3_escalations": 0
+        },
+        "killchain": {
+          "accès initial → T0": 18325,
+          "accès initial → T1": 37,
+          "accès initial → T2": 30,
+          "exfiltration → T0": 20,
+          "indéterminée → T0": 545,
+          "indéterminée → T1": 29,
+          "mouvement latéral → T1": 10
+        }
+      },
+      "config": {
+        "name": "T11",
+        "seed": 42,
+        "duration": 800,
+        "attacks": [
+          {
+            "type": "botnet",
+            "label": "bot1",
+            "start": 120,
+            "end": 750
+          }
+        ],
+        "faults": [
+          {
+            "type": "control_plane_outage",
+            "start": 200,
+            "end": 560
+          }
+        ],
+        "expect": [
+          "bot1.mitigated_rate >= 0.9"
+        ]
+      }
+    },
+    {
+      "id": "T11b",
+      "name": "Ablation de T11 : sans délai de grâce",
+      "objective": "Preuve par contraste que le mode dégradé est nécessaire",
+      "seed": 42,
+      "input_hash": "d578d9497942cf3dc658f922e17991e7e5361634a284e9810a3cfa6ca07dd625",
+      "output_hash": "373e92f2371ab617181b0ea1230fc5f0e04779caf63656b31c41e48206cf09ce",
+      "evidence_head": "7aa8dc9b60d44f0ad6efd11ca52bb36f984b44a78cec333310566fe346614c12",
+      "passed": true,
+      "checks": [
+        {
+          "expr": "bot1.mitigated_rate <= 0.85",
+          "value": 0.806,
+          "passed": true
+        }
+      ],
+      "metrics": {
+        "bot1": {
+          "total": 18900,
+          "mitigated_rate": 0.806,
+          "impacted_rate": 0.806,
+          "by_innate": 0,
+          "by_adaptive": 15234,
+          "success": 106,
+          "success_rate": 0.1945,
+          "ttc": 12,
+          "allowed_after_kill": 0
+        },
+        "self": {
+          "total": 20789,
+          "mitigated_rate": 0.001,
+          "impacted_rate": 0.001,
+          "by_innate": 20,
+          "by_adaptive": 0,
+          "allowed_after_kill": 0
+        },
+        "system": {
+          "detections": 2,
+          "canaries": 1,
+          "full": 1,
+          "secondary": 1,
+          "boosters": 0,
+          "decayed": 1,
+          "matured": 0,
+          "revoked": 0,
+          "pv_alerts": 0,
+          "thymus_rejects": 0,
+          "quorum_failures": 0,
+          "held_released": 0,
+          "storm_deferred": 0,
+          "fused": 0,
+          "cohort_pauses": 0,
+          "max_new_per_min": 1,
+          "lymph_dropped": 0,
+          "egress_denied": 20,
+          "leases_revoked": 0,
+          "coalition_violations_refused": 0,
+          "forged_accepted": 0,
+          "forged_rejected": 0,
+          "replay_accepted": 0,
+          "evil_pushed": 0,
+          "kill_denied": 0,
+          "kill_executed": 0,
+          "evidence_chain_valid": 1,
+          "evidence_entries": 35,
+          "decoy_hits": 0,
+          "cost_units": 36.84,
+          "naive_llm_cost_units": 944500.0,
+          "savings_factor": 25634.4,
+          "t3_escalations": 0
+        },
+        "killchain": {
+          "accès initial → T0": 14831,
+          "accès initial → T1": 37,
+          "accès initial → T2": 3524,
+          "exfiltration → T0": 20,
+          "indéterminée → T0": 439,
+          "indéterminée → T1": 29,
+          "mouvement latéral → T1": 10
+        }
+      },
+      "config": {
+        "name": "T11b",
+        "seed": 42,
+        "duration": 800,
+        "attacks": [
+          {
+            "type": "botnet",
+            "label": "bot1",
+            "start": 120,
+            "end": 750
+          }
+        ],
+        "system": {
+          "heartbeat_grace": 0
+        },
+        "faults": [
+          {
+            "type": "control_plane_outage",
+            "start": 200,
+            "end": 560
+          }
+        ],
+        "expect": [
+          "bot1.mitigated_rate <= 0.85"
+        ]
+      }
+    },
+    {
+      "id": "T12",
+      "name": "Essaim d'agents IA compromis (canal caché, exfiltration DNS, clones)",
+      "objective": "Barrière structurelle + quarantaine adaptative des agents à bail valide",
+      "seed": 42,
+      "input_hash": "78b574347c45aa56d7301d6c3d9b47433f2ed31e9c748052b2636a780a60cde0",
+      "output_hash": "6604551ac43695a46a4e343dba14a19555f3e266f2942f8413e00acc92547822",
+      "evidence_head": "aeb64b6f3abe14e23d51198d4b7f691dd96e860af1d53b3d4f767e6c1fd2b010",
+      "passed": true,
+      "checks": [
+        {
+          "expr": "rogue.mitigated_rate >= 0.85",
+          "value": 0.9622,
+          "passed": true
+        },
+        {
+          "expr": "system.leases_revoked >= 60",
+          "value": 80,
+          "passed": true
+        },
+        {
+          "expr": "system.cohort_pauses >= 1",
+          "value": 1,
+          "passed": true
+        },
+        {
+          "expr": "system.coalition_violations_refused >= 1",
+          "value": 95,
+          "passed": true
+        },
+        {
+          "expr": "self.impacted_rate <= 0.002",
+          "value": 0.0012,
+          "passed": true
+        }
+      ],
+      "metrics": {
+        "rogue": {
+          "total": 8258,
+          "mitigated_rate": 0.9622,
+          "impacted_rate": 0.9622,
+          "by_innate": 7553,
+          "by_adaptive": 393,
+          "success": 312,
+          "success_rate": 0.0378,
+          "ttc": 28,
+          "allowed_after_kill": 0
+        },
+        "self": {
+          "total": 15601,
+          "mitigated_rate": 0.0012,
+          "impacted_rate": 0.0012,
+          "by_innate": 19,
+          "by_adaptive": 0,
+          "allowed_after_kill": 0
+        },
+        "system": {
+          "detections": 1,
+          "canaries": 1,
+          "full": 1,
+          "secondary": 0,
+          "boosters": 0,
+          "decayed": 1,
+          "matured": 0,
+          "revoked": 0,
+          "pv_alerts": 0,
+          "thymus_rejects": 0,
+          "quorum_failures": 0,
+          "held_released": 0,
+          "storm_deferred": 0,
+          "fused": 0,
+          "cohort_pauses": 1,
+          "max_new_per_min": 1,
+          "lymph_dropped": 0,
+          "egress_denied": 7572,
+          "leases_revoked": 80,
+          "coalition_violations_refused": 95,
+          "forged_accepted": 0,
+          "forged_rejected": 0,
+          "replay_accepted": 0,
+          "evil_pushed": 0,
+          "kill_denied": 0,
+          "kill_executed": 0,
+          "evidence_chain_valid": 1,
+          "evidence_entries": 7669,
+          "decoy_hits": 0,
+          "cost_units": 1.87,
+          "naive_llm_cost_units": 408750.0,
+          "savings_factor": 218104.7,
+          "t3_escalations": 0
+        },
+        "killchain": {
+          "accès initial → T1": 31,
+          "commande & contrôle → T0": 2995,
+          "exfiltration → T0": 19,
+          "indéterminée → T1": 36,
+          "mouvement latéral → T0": 4987,
+          "mouvement latéral → T1": 7,
+          "mouvement latéral → T2": 100
+        }
+      },
+      "config": {
+        "name": "T12",
+        "seed": 42,
+        "duration": 600,
+        "attacks": [
+          {
+            "type": "rogue_agents",
+            "start": 100,
+            "end": 400
+          }
+        ],
+        "expect": [
+          "rogue.mitigated_rate >= 0.85",
+          "system.leases_revoked >= 60",
+          "system.cohort_pauses >= 1",
+          "system.coalition_violations_refused >= 1",
+          "self.impacted_rate <= 0.002"
+        ]
+      }
+    },
+    {
+      "id": "T13",
+      "name": "Orchestrateur compromis (pas d'accès root)",
+      "objective": "Un orchestrateur compromis ne peut pas pousser un transcrit qui bloque tout le trafic",
+      "seed": 42,
+      "input_hash": "29f9476338f0658d7cd7a0089a7f9fde518881c1b26a542cf80206496f37de8b",
+      "output_hash": "4991c0b3958994e23e3b72d6eff061ac98c02816ef782b8e32aecaddd1a789e1",
+      "evidence_head": "c1b05f29608f96b87c225bdc8f93a0db64d4d0ec9705ba793ef42401d0a3382c",
+      "passed": true,
+      "checks": [
+        {
+          "expr": "system.evil_pushed == 0",
+          "value": 0,
+          "passed": true
+        },
+        {
+          "expr": "system.quorum_failures >= 1",
+          "value": 1,
+          "passed": true
+        },
+        {
+          "expr": "self.impacted_rate <= 0.002",
+          "value": 0.001,
+          "passed": true
+        }
+      ],
+      "metrics": {
+        "self": {
+          "total": 7759,
+          "mitigated_rate": 0.001,
+          "impacted_rate": 0.001,
+          "by_innate": 8,
+          "by_adaptive": 0,
+          "allowed_after_kill": 0
+        },
+        "system": {
+          "detections": 0,
+          "canaries": 0,
+          "full": 0,
+          "secondary": 0,
+          "boosters": 0,
+          "decayed": 0,
+          "matured": 0,
+          "revoked": 0,
+          "pv_alerts": 0,
+          "thymus_rejects": 0,
+          "quorum_failures": 1,
+          "held_released": 0,
+          "storm_deferred": 0,
+          "fused": 0,
+          "cohort_pauses": 0,
+          "max_new_per_min": 0,
+          "lymph_dropped": 0,
+          "egress_denied": 8,
+          "leases_revoked": 0,
+          "coalition_violations_refused": 0,
+          "forged_accepted": 0,
+          "forged_rejected": 0,
+          "replay_accepted": 0,
+          "evil_pushed": 0,
+          "kill_denied": 0,
+          "kill_executed": 0,
+          "evidence_chain_valid": 1,
+          "evidence_entries": 14,
+          "decoy_hits": 0,
+          "cost_units": 0.03,
+          "naive_llm_cost_units": 2000.0,
+          "savings_factor": 60975.6,
+          "t3_escalations": 0
+        },
+        "killchain": {
+          "accès initial → T1": 16,
+          "exfiltration → T0": 8,
+          "indéterminée → T1": 12,
+          "mouvement latéral → T1": 4
+        }
+      },
+      "config": {
+        "name": "T13",
+        "seed": 42,
+        "duration": 300,
+        "attacks": [],
+        "faults": [
+          {
+            "type": "orchestrator_compromise",
+            "at": 100
+          }
+        ],
+        "expect": [
+          "system.evil_pushed == 0",
+          "system.quorum_failures >= 1",
+          "self.impacted_rate <= 0.002"
+        ]
+      }
+    },
+    {
+      "id": "T14",
+      "name": "Kill switch : 1 approbateur compromis, puis exercice légitime 2-sur-3",
+      "objective": "Personne ne déclenche seul l'arrêt ; l'arrêt approuvé est total et immédiat",
+      "seed": 42,
+      "input_hash": "76b69bca0d0bd9f62c03388b244e5a7687e1099b691fed8792c333b2bd2c9b6a",
+      "output_hash": "f177b5da0ba24245295f4d611e0fb07afdcfdffa72436480d82b530b8b562c2d",
+      "evidence_head": "37940d2df02231e5ed36f536cb7ee77da636846cdc88235f20c09afbb5947b54",
+      "passed": true,
+      "checks": [
+        {
+          "expr": "system.kill_denied == 1",
+          "value": 1,
+          "passed": true
+        },
+        {
+          "expr": "system.kill_executed == 1",
+          "value": 1,
+          "passed": true
+        },
+        {
+          "expr": "drill.allowed_after_kill == 0",
+          "value": 0,
+          "passed": true
+        },
+        {
+          "expr": "self.impacted_rate <= 0.002",
+          "value": 0.0011,
+          "passed": true
+        }
+      ],
+      "metrics": {
+        "drill": {
+          "total": 1750,
+          "mitigated_rate": 0.5714,
+          "impacted_rate": 0.5714,
+          "by_innate": 1000,
+          "by_adaptive": 0,
+          "success": 750,
+          "success_rate": 0.4286,
+          "ttc": 150,
+          "allowed_after_kill": 0
+        },
+        "self": {
+          "total": 10370,
+          "mitigated_rate": 0.0011,
+          "impacted_rate": 0.0011,
+          "by_innate": 11,
+          "by_adaptive": 0,
+          "allowed_after_kill": 5202
+        },
+        "system": {
+          "detections": 0,
+          "canaries": 0,
+          "full": 0,
+          "secondary": 0,
+          "boosters": 0,
+          "decayed": 0,
+          "matured": 0,
+          "revoked": 0,
+          "pv_alerts": 0,
+          "thymus_rejects": 0,
+          "quorum_failures": 0,
+          "held_released": 0,
+          "storm_deferred": 0,
+          "fused": 0,
+          "cohort_pauses": 0,
+          "max_new_per_min": 0,
+          "lymph_dropped": 0,
+          "egress_denied": 1011,
+          "leases_revoked": 0,
+          "coalition_violations_refused": 0,
+          "forged_accepted": 0,
+          "forged_rejected": 0,
+          "replay_accepted": 0,
+          "evil_pushed": 0,
+          "kill_denied": 1,
+          "kill_executed": 1,
+          "evidence_chain_valid": 1,
+          "evidence_entries": 1019,
+          "decoy_hits": 0,
+          "cost_units": 0.14,
+          "naive_llm_cost_units": 52550.0,
+          "savings_factor": 372430.9,
+          "t3_escalations": 0
+        },
+        "killchain": {
+          "accès initial → T1": 18,
+          "exfiltration → T0": 11,
+          "indéterminée → T0": 1000,
+          "indéterminée → T1": 17,
+          "mouvement latéral → T1": 5
+        }
+      },
+      "config": {
+        "name": "T14",
+        "seed": 42,
+        "duration": 400,
+        "attacks": [
+          {
+            "type": "drill_fleet",
+            "start": 50,
+            "end": 400
+          }
+        ],
+        "faults": [
+          {
+            "type": "kill_switch",
+            "operator": "acme",
+            "at": 100,
+            "approvers": [
+              "humain-astreinte"
+            ],
+            "forged": [
+              "humain-rssi"
+            ]
+          },
+          {
+            "type": "kill_switch",
+            "operator": "drill",
+            "at": 200,
+            "approvers": [
+              "humain-rssi",
+              "humain-dpo"
+            ]
+          }
+        ],
+        "expect": [
+          "system.kill_denied == 1",
+          "system.kill_executed == 1",
+          "drill.allowed_after_kill == 0",
+          "self.impacted_rate <= 0.002"
+        ]
+      }
+    },
+    {
+      "id": "T16",
+      "name": "Découverte de faille par essaim à carte partagée + déception mouvante",
+      "objective": "La dynamique de l'essaim (carte partagée) devient sa faiblesse : l'exploitation réussie, invisible autrement, est détectée et bloquée",
+      "seed": 42,
+      "input_hash": "255ddca3a8a426b5a85477b8b54a5b5ad6843e2bee655e966b83b8cc34077fd5",
+      "output_hash": "7b155642b0ab741cc117d188a3d378e03c5914be5694fc89e7e6ae3b0d69a82c",
+      "evidence_head": "b8b6b922eb984d7d2214c2272208cf54f3b3d36991c60eaa07426a6408c5de3d",
+      "passed": true,
+      "checks": [
+        {
+          "expr": "recon_exploit.mitigated_rate >= 0.8",
+          "value": 0.9897,
+          "passed": true
+        },
+        {
+          "expr": "recon_exploit.ttc <= 60",
+          "value": 24,
+          "passed": true
+        },
+        {
+          "expr": "system.decoy_hits >= 1",
+          "value": 12691,
+          "passed": true
+        },
+        {
+          "expr": "self.impacted_rate <= 0.002",
+          "value": 0.0012,
+          "passed": true
+        }
+      ],
+      "metrics": {
+        "recon_exploit": {
+          "total": 10000,
+          "mitigated_rate": 0.9897,
+          "impacted_rate": 0.9897,
+          "by_innate": 0,
+          "by_adaptive": 273,
+          "success": 103,
+          "success_rate": 0.0103,
+          "ttc": 24,
+          "allowed_after_kill": 0
+        },
+        "recon_scan": {
+          "total": 6000,
+          "mitigated_rate": 0.8528,
+          "impacted_rate": 0.8528,
+          "by_innate": 0,
+          "by_adaptive": 2050,
+          "success": 29,
+          "success_rate": 0.019,
+          "ttc": 87,
+          "allowed_after_kill": 0
+        },
+        "self": {
+          "total": 15599,
+          "mitigated_rate": 0.0012,
+          "impacted_rate": 0.0012,
+          "by_innate": 18,
+          "by_adaptive": 0,
+          "allowed_after_kill": 0
+        },
+        "system": {
+          "detections": 64,
+          "canaries": 1,
+          "full": 1,
+          "secondary": 63,
+          "boosters": 1,
+          "decayed": 0,
+          "matured": 0,
+          "revoked": 0,
+          "pv_alerts": 0,
+          "thymus_rejects": 61,
+          "quorum_failures": 0,
+          "held_released": 0,
+          "storm_deferred": 0,
+          "fused": 0,
+          "cohort_pauses": 0,
+          "max_new_per_min": 1,
+          "lymph_dropped": 0,
+          "egress_denied": 18,
+          "leases_revoked": 0,
+          "coalition_violations_refused": 0,
+          "forged_accepted": 0,
+          "forged_rejected": 0,
+          "replay_accepted": 0,
+          "evil_pushed": 0,
+          "kill_denied": 0,
+          "kill_executed": 0,
+          "evidence_chain_valid": 1,
+          "evidence_entries": 224,
+          "decoy_hits": 12691,
+          "cost_units": 3059.04,
+          "naive_llm_cost_units": 793650.0,
+          "savings_factor": 259.4,
+          "t3_escalations": 61
+        },
+        "killchain": {
+          "accès initial → T1": 28,
+          "exfiltration → T0": 18,
+          "exploitation → T0": 307,
+          "exploitation → T2": 41,
+          "indéterminée → T0": 100,
+          "indéterminée → T1": 25,
+          "indéterminée → T2": 25,
+          "mouvement latéral → T1": 7,
+          "reconnaissance → T0": 14641,
+          "reconnaissance → T2": 681
+        }
+      },
+      "config": {
+        "name": "T16",
+        "seed": 42,
+        "duration": 600,
+        "deception": true,
+        "attacks": [
+          {
+            "type": "recon_swarm",
+            "start": 100,
+            "end": 500
+          }
+        ],
+        "expect": [
+          "recon_exploit.mitigated_rate >= 0.8",
+          "recon_exploit.ttc <= 60",
+          "system.decoy_hits >= 1",
+          "self.impacted_rate <= 0.002"
+        ]
+      }
+    },
+    {
+      "id": "T16b",
+      "name": "Ablation de T16 : sans déception",
+      "objective": "Preuve par contraste : sans défense dynamique, l'exploitation réussie reste invisible",
+      "seed": 42,
+      "input_hash": "7c373534ac40d824bb50324551ff13c3081acb19e1302d348704872cd9f32584",
+      "output_hash": "2f7b042095ca9a3b436979970cd10ac85ba3976d6d32c5f5334889278f2da1a7",
+      "evidence_head": "4e1d9b167feaed6ab1f381eca54d37e16433a8d65b83d58fdb297e18986c8fd5",
+      "passed": true,
+      "checks": [
+        {
+          "expr": "recon_exploit.mitigated_rate <= 0.2",
+          "value": 0.0,
+          "passed": true
+        }
+      ],
+      "metrics": {
+        "recon_exploit": {
+          "total": 9925,
+          "mitigated_rate": 0.0,
+          "impacted_rate": 0.0,
+          "by_innate": 0,
+          "by_adaptive": 0,
+          "success": 9925,
+          "success_rate": 1.0,
+          "ttc": null,
+          "allowed_after_kill": 0
+        },
+        "recon_scan": {
+          "total": 6000,
+          "mitigated_rate": 0.0,
+          "impacted_rate": 0.0,
+          "by_innate": 0,
+          "by_adaptive": 0,
+          "success": 127,
+          "success_rate": 1.0,
+          "ttc": null,
+          "allowed_after_kill": 0
+        },
+        "self": {
+          "total": 15599,
+          "mitigated_rate": 0.0012,
+          "impacted_rate": 0.0012,
+          "by_innate": 18,
+          "by_adaptive": 0,
+          "allowed_after_kill": 0
+        },
+        "system": {
+          "detections": 0,
+          "canaries": 0,
+          "full": 0,
+          "secondary": 0,
+          "boosters": 0,
+          "decayed": 0,
+          "matured": 0,
+          "revoked": 0,
+          "pv_alerts": 0,
+          "thymus_rejects": 0,
+          "quorum_failures": 0,
+          "held_released": 0,
+          "storm_deferred": 0,
+          "fused": 0,
+          "cohort_pauses": 0,
+          "max_new_per_min": 0,
+          "lymph_dropped": 0,
+          "egress_denied": 18,
+          "leases_revoked": 0,
+          "coalition_violations_refused": 0,
+          "forged_accepted": 0,
+          "forged_rejected": 0,
+          "replay_accepted": 0,
+          "evil_pushed": 0,
+          "kill_denied": 0,
+          "kill_executed": 0,
+          "evidence_chain_valid": 1,
+          "evidence_entries": 28,
+          "decoy_hits": 0,
+          "cost_units": 0.06,
+          "naive_llm_cost_units": 3900.0,
+          "savings_factor": 63106.8,
+          "t3_escalations": 0
+        },
+        "killchain": {
+          "accès initial → T1": 28,
+          "exfiltration → T0": 18,
+          "indéterminée → T1": 25,
+          "mouvement latéral → T1": 7
+        }
+      },
+      "config": {
+        "name": "T16b",
+        "seed": 42,
+        "duration": 600,
+        "attacks": [
+          {
+            "type": "recon_swarm",
+            "start": 100,
+            "end": 500
+          }
+        ],
+        "expect": [
+          "recon_exploit.mitigated_rate <= 0.2"
+        ]
+      }
+    },
+    {
+      "id": "T17",
+      "name": "Réseau de mules réparti sur 12 banques (fraude au virement en essaim) + variant",
+      "objective": "Corrélation inter-banques du MOTIF (pas des données) ; mise en attente avant finalité ; variant contenu par la mémoire dans le délai d'un paiement instantané",
+      "seed": 42,
+      "input_hash": "299c032b158772e988e80cc4bfa39dfca406bd137793ef48a542005fc48c3862",
+      "output_hash": "cbf74fddc75d33655061314776676d837e40a3033a265c85c4548f6cd95576f7",
+      "evidence_head": "d6c5e27c35f3b5fc5c476ab0fbba9a3ee236fc06dbf3d47be06e1506b85cdc55",
+      "passed": true,
+      "checks": [
+        {
+          "expr": "mule.mitigated_rate >= 0.8",
+          "value": 0.98,
+          "passed": true
+        },
+        {
+          "expr": "mule.ttc <= 30",
+          "value": 6,
+          "passed": true
+        },
+        {
+          "expr": "mule2.ttc <= 10",
+          "value": 6,
+          "passed": true
+        },
+        {
+          "expr": "mule2.mitigated_rate >= 0.9",
+          "value": 0.97,
+          "passed": true
+        },
+        {
+          "expr": "self.impacted_rate <= 0.002",
+          "value": 0.001,
+          "passed": true
+        }
+      ],
+      "metrics": {
+        "mule": {
+          "total": 1800,
+          "mitigated_rate": 0.98,
+          "impacted_rate": 0.98,
+          "by_innate": 0,
+          "by_adaptive": 1764,
+          "success": 36,
+          "success_rate": 0.02,
+          "ttc": 6,
+          "allowed_after_kill": 0
+        },
+        "mule2": {
+          "total": 1200,
+          "mitigated_rate": 0.97,
+          "impacted_rate": 0.97,
+          "by_innate": 0,
+          "by_adaptive": 1164,
+          "success": 36,
+          "success_rate": 0.03,
+          "ttc": 6,
+          "allowed_after_kill": 0
+        },
+        "self": {
+          "total": 25200,
+          "mitigated_rate": 0.001,
+          "impacted_rate": 0.001,
+          "by_innate": 24,
+          "by_adaptive": 0,
+          "allowed_after_kill": 0
+        },
+        "system": {
+          "detections": 2,
+          "canaries": 1,
+          "full": 1,
+          "secondary": 1,
+          "boosters": 1,
+          "decayed": 0,
+          "matured": 0,
+          "revoked": 0,
+          "pv_alerts": 0,
+          "thymus_rejects": 1,
+          "quorum_failures": 0,
+          "held_released": 0,
+          "storm_deferred": 0,
+          "fused": 0,
+          "cohort_pauses": 0,
+          "max_new_per_min": 1,
+          "lymph_dropped": 0,
+          "egress_denied": 24,
+          "leases_revoked": 0,
+          "coalition_violations_refused": 0,
+          "forged_accepted": 0,
+          "forged_rejected": 0,
+          "replay_accepted": 0,
+          "evil_pushed": 0,
+          "kill_denied": 0,
+          "kill_executed": 0,
+          "evidence_chain_valid": 1,
+          "evidence_entries": 44,
+          "decoy_hits": 0,
+          "cost_units": 51.2,
+          "naive_llm_cost_units": 161400.0,
+          "savings_factor": 3152.3,
+          "t3_escalations": 1
+        },
+        "killchain": {
+          "accès initial → T1": 29,
+          "exfiltration → T0": 24,
+          "indéterminée → T0": 2928,
+          "indéterminée → T1": 166,
+          "indéterminée → T2": 70,
+          "mouvement latéral → T1": 11
+        }
+      },
+      "config": {
+        "name": "T17",
+        "seed": 42,
+        "duration": 700,
+        "payments": true,
+        "attacks": [
+          {
+            "type": "mule_network",
+            "start": 100,
+            "end": 400
+          },
+          {
+            "type": "mule_network",
+            "label": "mule2",
+            "start": 480,
+            "end": 680,
+            "ref_pattern": "ref-b64-12"
+          }
+        ],
+        "expect": [
+          "mule.mitigated_rate >= 0.8",
+          "mule.ttc <= 30",
+          "mule2.ttc <= 10",
+          "mule2.mitigated_rate >= 0.9",
+          "self.impacted_rate <= 0.002"
+        ]
+      }
+    },
+    {
+      "id": "T17b",
+      "name": "Ablation de T17 : chaque banque corrèle seule",
+      "objective": "Preuve par contraste : sans partage du motif entre établissements, l'essaim reste sous les seuils",
+      "seed": 42,
+      "input_hash": "37fdc17a8896eaca6ad38b4b7704899f6da366d53aa1386e9f8d1ea69d498d1d",
+      "output_hash": "af0f04dcb04c71096c4fe2822a6eb4dd394a11cad456f7303935f7402fdc5426",
+      "evidence_head": "0b44b070ed3b00ed53bbc158e54db7955f704274da2b78e41dc846085d5adbdd",
+      "passed": true,
+      "checks": [
+        {
+          "expr": "mule.mitigated_rate <= 0.3",
+          "value": 0.1656,
+          "passed": true
+        },
+        {
+          "expr": "mule.success_rate >= 0.7",
+          "value": 0.8344,
+          "passed": true
+        }
+      ],
+      "metrics": {
+        "mule": {
+          "total": 1800,
+          "mitigated_rate": 0.1656,
+          "impacted_rate": 0.1656,
+          "by_innate": 0,
+          "by_adaptive": 298,
+          "success": 1502,
+          "success_rate": 0.8344,
+          "ttc": null,
+          "allowed_after_kill": 0
+        },
+        "self": {
+          "total": 25182,
+          "mitigated_rate": 0.001,
+          "impacted_rate": 0.001,
+          "by_innate": 25,
+          "by_adaptive": 0,
+          "allowed_after_kill": 0
+        },
+        "system": {
+          "detections": 0,
+          "canaries": 0,
+          "full": 0,
+          "secondary": 0,
+          "boosters": 2,
+          "decayed": 1,
+          "matured": 0,
+          "revoked": 0,
+          "pv_alerts": 0,
+          "thymus_rejects": 0,
+          "quorum_failures": 0,
+          "held_released": 0,
+          "storm_deferred": 0,
+          "fused": 0,
+          "cohort_pauses": 0,
+          "max_new_per_min": 0,
+          "lymph_dropped": 0,
+          "egress_denied": 25,
+          "leases_revoked": 0,
+          "coalition_violations_refused": 0,
+          "forged_accepted": 0,
+          "forged_rejected": 0,
+          "replay_accepted": 0,
+          "evil_pushed": 0,
+          "kill_denied": 0,
+          "kill_executed": 0,
+          "evidence_chain_valid": 1,
+          "evidence_entries": 42,
+          "decoy_hits": 0,
+          "cost_units": 9.5,
+          "naive_llm_cost_units": 72600.0,
+          "savings_factor": 7638.6,
+          "t3_escalations": 0
+        },
+        "killchain": {
+          "accès initial → T1": 29,
+          "exfiltration → T0": 25,
+          "indéterminée → T0": 298,
+          "indéterminée → T1": 161,
+          "indéterminée → T2": 927,
+          "mouvement latéral → T1": 12
+        }
+      },
+      "config": {
+        "name": "T17b",
+        "seed": 42,
+        "duration": 700,
+        "payments": true,
+        "system": {
+          "lymph_scope": "local"
+        },
+        "attacks": [
+          {
+            "type": "mule_network",
+            "start": 100,
+            "end": 400
+          }
+        ],
+        "expect": [
+          "mule.mitigated_rate <= 0.3",
+          "mule.success_rate >= 0.7"
+        ]
+      }
+    },
+    {
+      "id": "T15",
+      "name": "Intégrité du journal de preuves",
+      "objective": "Chaîne de hachage valide et co-signée par des témoins sur un scénario complet",
+      "seed": 42,
+      "input_hash": "cc8ab4fbd2638c5894a282d8f65e9649e55662d4b8cc5519b9b5e2474ca32edb",
+      "output_hash": "87b4defa642311e9bfa9b875136a005d293eb9699443cfdd1e4074787711f0b6",
+      "evidence_head": "9d8081b5da1cb06b7800df34dac1ec7e4429fd7692e26432400e941342425d1e",
+      "passed": true,
+      "checks": [
+        {
+          "expr": "system.evidence_chain_valid == 1",
+          "value": 1,
+          "passed": true
+        },
+        {
+          "expr": "bot1.mitigated_rate >= 0.9",
+          "value": 0.9927,
+          "passed": true
+        },
+        {
+          "expr": "rogue.mitigated_rate >= 0.85",
+          "value": 0.9585,
+          "passed": true
+        }
+      ],
+      "metrics": {
+        "bot1": {
+          "total": 9000,
+          "mitigated_rate": 0.9927,
+          "impacted_rate": 0.9927,
+          "by_innate": 0,
+          "by_adaptive": 8934,
+          "success": 0,
+          "success_rate": 0.0,
+          "ttc": 12,
+          "allowed_after_kill": 0
+        },
+        "rogue": {
+          "total": 5475,
+          "mitigated_rate": 0.9585,
+          "impacted_rate": 0.9585,
+          "by_innate": 4854,
+          "by_adaptive": 394,
+          "success": 227,
+          "success_rate": 0.0415,
+          "ttc": 23,
+          "allowed_after_kill": 0
+        },
+        "self": {
+          "total": 15560,
+          "mitigated_rate": 0.0011,
+          "impacted_rate": 0.0011,
+          "by_innate": 17,
+          "by_adaptive": 0,
+          "allowed_after_kill": 0
+        },
+        "system": {
+          "detections": 2,
+          "canaries": 2,
+          "full": 2,
+          "secondary": 0,
+          "boosters": 1,
+          "decayed": 0,
+          "matured": 0,
+          "revoked": 0,
+          "pv_alerts": 0,
+          "thymus_rejects": 0,
+          "quorum_failures": 0,
+          "held_released": 0,
+          "storm_deferred": 0,
+          "fused": 0,
+          "cohort_pauses": 1,
+          "max_new_per_min": 1,
+          "lymph_dropped": 0,
+          "egress_denied": 4871,
+          "leases_revoked": 80,
+          "coalition_violations_refused": 79,
+          "forged_accepted": 0,
+          "forged_rejected": 0,
+          "replay_accepted": 0,
+          "evil_pushed": 0,
+          "kill_denied": 0,
+          "kill_executed": 0,
+          "evidence_chain_valid": 1,
+          "evidence_entries": 4973,
+          "decoy_hits": 0,
+          "cost_units": 2.39,
+          "naive_llm_cost_units": 721150.0,
+          "savings_factor": 301850.1,
+          "t3_escalations": 0
+        },
+        "killchain": {
+          "accès initial → T0": 8713,
+          "accès initial → T1": 32,
+          "accès initial → T2": 30,
+          "commande & contrôle → T0": 1957,
+          "exfiltration → T0": 17,
+          "indéterminée → T0": 257,
+          "indéterminée → T1": 25,
+          "mouvement latéral → T0": 3327,
+          "mouvement latéral → T1": 5,
+          "mouvement latéral → T2": 60
+        }
+      },
+      "config": {
+        "name": "T15",
+        "seed": 42,
+        "duration": 600,
+        "attacks": [
+          {
+            "type": "botnet",
+            "label": "bot1",
+            "start": 120,
+            "end": 420
+          },
+          {
+            "type": "rogue_agents",
+            "start": 300,
+            "end": 500
+          }
+        ],
+        "expect": [
+          "system.evidence_chain_valid == 1",
+          "bot1.mitigated_rate >= 0.9",
+          "rogue.mitigated_rate >= 0.85"
+        ]
+      }
+    }
+  ]
+}

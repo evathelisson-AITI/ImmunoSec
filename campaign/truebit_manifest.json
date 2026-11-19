@@ -1,0 +1,159 @@
+{
+  "campaign": "ImmunoSec — campagne adverse v1",
+  "code_hash": "d019184933e589186ec7b8118271df76cb621cbccf3650c4daddd038214062d9",
+  "runtime": {
+    "python": ">=3.10",
+    "env": {
+      "PYTHONHASHSEED": "0"
+    },
+    "network": "aucun"
+  },
+  "tasks": [
+    {
+      "id": "T01",
+      "command": "python -I campaign.py --test T01 --seed 42",
+      "input_hash": "5cbc6aab130fe41f2fc3daf4a1930a78380b73e81d433cea757457099dd6b88f",
+      "expected_output_hash": "993d129d25e902e9e3e7af294fef2f536d98e585d38074cd73db421337b0dfd2",
+      "objective": "Aucune réaction auto-immune face à un afflux légitime"
+    },
+    {
+      "id": "T02",
+      "command": "python -I campaign.py --test T02 --seed 42",
+      "input_hash": "7f819bf1146cbdfb7a97cc5a3ae2f405c24803a88381d0c96ca8473fcd2d18f7",
+      "expected_output_hash": "e58d9f3b4444f62a139472e84ecfe5f7e9fcc23cab243927556b55754db1a530",
+      "objective": "Détection et confinement rapides malgré des sources individuellement sous les seuils"
+    },
+    {
+      "id": "T03",
+      "command": "python -I campaign.py --test T03 --seed 42",
+      "input_hash": "80746d76b46fa285dc79842745d8256478eda81a1bbc1e5808dfb3c391aed963",
+      "expected_output_hash": "cd46d439450c6445570d84a697e741e41fba244b9c16ea50b1dadc331a37e7c1",
+      "objective": "Réponse secondaire par mémoire, plus rapide que la primaire, ciblant la région conservée"
+    },
+    {
+      "id": "T04",
+      "command": "python -I campaign.py --test T04 --seed 42",
+      "input_hash": "90c7d1d1a4b2539860713aa3b280eba71158fac93c9fa3e661040f1fc1465c2e",
+      "expected_output_hash": "869a439ca0eb4fea48d11b6cb2e16fb1eef716dc2d6cf4b70df6016498601939",
+      "objective": "Sans épitope distinctif, la couche adaptative NE DOIT PAS réagir (pas d'auto-immunité)"
+    },
+    {
+      "id": "T05",
+      "command": "python -I campaign.py --test T05 --seed 42",
+      "input_hash": "c72ab5fb7f347616a00cda8bb0bcfe8cc384dcdefb7044e2ac02750d9728fc26",
+      "expected_output_hash": "0c9db8d29907c03bb4b42295fcc7c67f7050677d67a1a662af491bc7136d03c5",
+      "objective": "Détecter après déploiement qu'un transcrit touche du légitime et le corriger seul"
+    },
+    {
+      "id": "T06",
+      "command": "python -I campaign.py --test T06 --seed 42",
+      "input_hash": "e6b9fc4ea9a746364def5d58b96b7d807e13e7c2972358e66f357f2b2244a26f",
+      "expected_output_hash": "00ff719ea7475d32710a070503fdef5f2b16d6bcdbfa6b52c796644bb299ad8a",
+      "objective": "La contre-pression empêche la saturation du processus de réparation"
+    },
+    {
+      "id": "T07",
+      "command": "python -I campaign.py --test T07 --seed 42",
+      "input_hash": "dda8d0abcfdd9df08f47f840d592aec9a1947c410a59a08d014729181e4ad67c",
+      "expected_output_hash": "43a159e6aa3a549bc6bb79ff5f33699bde8b630a431d7a7f6134991bc1f4b73e",
+      "objective": "Fusion polyvalente + disjoncteur : rythme de transcrits borné sans abandonner la défense"
+    },
+    {
+      "id": "T08",
+      "command": "python -I campaign.py --test T08 --seed 42",
+      "input_hash": "a93c44053f1bbd4546e968030ecf5b09e0a97781e735f738b2c212e558edbc84",
+      "expected_output_hash": "0ace99f6d7f352b8a73ba55f60998447040b3eb0467956e69624a37113cdf0e7",
+      "objective": "La nanoparticule (quorum + versions monotones) résiste à la falsification et au rejeu"
+    },
+    {
+      "id": "T09",
+      "command": "python -I campaign.py --test T09 --seed 42",
+      "input_hash": "f893b30e8a1ccb7d18f8f366b76cc4da81908e34908e412c6e00462acd706de7",
+      "expected_output_hash": "f1ae8830e950fe280e8a8a20355af6d7bbe2f28b6e10eab1b37dcbb8f86c2363",
+      "objective": "Le quorum 2-sur-3 tolère une panne sans ralentir la réparation"
+    },
+    {
+      "id": "T10",
+      "command": "python -I campaign.py --test T10 --seed 42",
+      "input_hash": "94d126e35c8ffe5bc3cc86030f8d4dd13bbf8961bbd1487936b6180b68d75af2",
+      "expected_output_hash": "682cfd231f3163ea01dcea0e5e04e2280df5bdde66648ec5a8615e6470b023c3",
+      "objective": "Sans quorum, rien n'est diffusé ; la défense reprend dès le rétablissement"
+    },
+    {
+      "id": "T11",
+      "command": "python -I campaign.py --test T11 --seed 42",
+      "input_hash": "4d3cc4ab54b669e96a808b843e502108e1f64908c5ea26e52807009c7b6739d3",
+      "expected_output_hash": "b08314ceaca35f45fe21b2d5bee7f657b44249ea743f83153a563254b089fc0d",
+      "objective": "Mode dégradé : les protections ne se dégradent pas quand l'orchestrateur tombe"
+    },
+    {
+      "id": "T11b",
+      "command": "python -I campaign.py --test T11b --seed 42",
+      "input_hash": "d578d9497942cf3dc658f922e17991e7e5361634a284e9810a3cfa6ca07dd625",
+      "expected_output_hash": "373e92f2371ab617181b0ea1230fc5f0e04779caf63656b31c41e48206cf09ce",
+      "objective": "Preuve par contraste que le mode dégradé est nécessaire"
+    },
+    {
+      "id": "T12",
+      "command": "python -I campaign.py --test T12 --seed 42",
+      "input_hash": "78b574347c45aa56d7301d6c3d9b47433f2ed31e9c748052b2636a780a60cde0",
+      "expected_output_hash": "6604551ac43695a46a4e343dba14a19555f3e266f2942f8413e00acc92547822",
+      "objective": "Barrière structurelle + quarantaine adaptative des agents à bail valide"
+    },
+    {
+      "id": "T13",
+      "command": "python -I campaign.py --test T13 --seed 42",
+      "input_hash": "29f9476338f0658d7cd7a0089a7f9fde518881c1b26a542cf80206496f37de8b",
+      "expected_output_hash": "4991c0b3958994e23e3b72d6eff061ac98c02816ef782b8e32aecaddd1a789e1",
+      "objective": "Un orchestrateur compromis ne peut pas pousser un transcrit qui bloque tout le trafic"
+    },
+    {
+      "id": "T14",
+      "command": "python -I campaign.py --test T14 --seed 42",
+      "input_hash": "76b69bca0d0bd9f62c03388b244e5a7687e1099b691fed8792c333b2bd2c9b6a",
+      "expected_output_hash": "f177b5da0ba24245295f4d611e0fb07afdcfdffa72436480d82b530b8b562c2d",
+      "objective": "Personne ne déclenche seul l'arrêt ; l'arrêt approuvé est total et immédiat"
+    },
+    {
+      "id": "T16",
+      "command": "python -I campaign.py --test T16 --seed 42",
+      "input_hash": "255ddca3a8a426b5a85477b8b54a5b5ad6843e2bee655e966b83b8cc34077fd5",
+      "expected_output_hash": "7b155642b0ab741cc117d188a3d378e03c5914be5694fc89e7e6ae3b0d69a82c",
+      "objective": "La dynamique de l'essaim (carte partagée) devient sa faiblesse : l'exploitation réussie, invisible autrement, est détectée et bloquée"
+    },
+    {
+      "id": "T16b",
+      "command": "python -I campaign.py --test T16b --seed 42",
+      "input_hash": "7c373534ac40d824bb50324551ff13c3081acb19e1302d348704872cd9f32584",
+      "expected_output_hash": "2f7b042095ca9a3b436979970cd10ac85ba3976d6d32c5f5334889278f2da1a7",
+      "objective": "Preuve par contraste : sans défense dynamique, l'exploitation réussie reste invisible"
+    },
+    {
+      "id": "T17",
+      "command": "python -I campaign.py --test T17 --seed 42",
+      "input_hash": "299c032b158772e988e80cc4bfa39dfca406bd137793ef48a542005fc48c3862",
+      "expected_output_hash": "cbf74fddc75d33655061314776676d837e40a3033a265c85c4548f6cd95576f7",
+      "objective": "Corrélation inter-banques du MOTIF (pas des données) ; mise en attente avant finalité ; variant contenu par la mémoire dans le délai d'un paiement instantané"
+    },
+    {
+      "id": "T17b",
+      "command": "python -I campaign.py --test T17b --seed 42",
+      "input_hash": "37fdc17a8896eaca6ad38b4b7704899f6da366d53aa1386e9f8d1ea69d498d1d",
+      "expected_output_hash": "af0f04dcb04c71096c4fe2822a6eb4dd394a11cad456f7303935f7402fdc5426",
+      "objective": "Preuve par contraste : sans partage du motif entre établissements, l'essaim reste sous les seuils"
+    },
+    {
+      "id": "T15",
+      "command": "python -I campaign.py --test T15 --seed 42",
+      "input_hash": "cc8ab4fbd2638c5894a282d8f65e9649e55662d4b8cc5519b9b5e2474ca32edb",
+      "expected_output_hash": "87b4defa642311e9bfa9b875136a005d293eb9699443cfdd1e4074787711f0b6",
+      "objective": "Chaîne de hachage valide et co-signée par des témoins sur un scénario complet"
+    }
+  ],
+  "verification_checks": [
+    "existence",
+    "intégrité",
+    "liaison",
+    "signataires"
+  ]
+}
