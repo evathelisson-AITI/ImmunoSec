@@ -141,3 +141,5 @@ de réponse aux incidents d'agents IA (2026) ; MITRE ATLAS (techniques agentique
 ## Licence
 
 Apache-2.0 (voir `LICENSE`). Divulgation de vulnérabilités : voir `SECURITY.md`.
+
+
